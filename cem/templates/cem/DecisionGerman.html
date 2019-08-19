@@ -1,0 +1,190 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load i18n %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** STYLES *** #}
+{# ****************************************************************************************************************** #}
+{% block styles %}
+    <link href="{% static 'cem/css/custom.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** SCRIPTS *** #}
+{# ****************************************************************************************************************** #}
+{% block scripts %}
+    {% if Constants.enforce_consistency == True %}
+        {% if Constants.one_choice_per_page == False and Constants.random_order == False %}
+            <script src="{% static 'cem/js/consistency.js' %}"></script>
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** TITLE *** #}
+{# ****************************************************************************************************************** #}
+{% block title %}
+    {% trans "Your Decision" %}
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** CONTENT *** #}
+{# ****************************************************************************************************************** #}
+{% block content %}
+
+<div class="show-modal-button">
+    <div class="row">
+        <div class="col text-center">
+            <button type="button" class="btn btn-info instruction-button" data-toggle="modal" data-target="#instructions_modal">Instruktionen</button>
+        </div>
+    </div>
+</div>
+<br>
+    Treffen Sie nun Ihre tatsächlichen Entscheidungen, die Ihren Verdienst in diesem Teil des Experiments bestimmen werden.
+<br>
+<br>
+
+<!-- Modal -->
+<div id="instructions_modal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2> Instruktionen </h2>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Nachfolgend werden Ihnen 21 Entscheidungspaare präsentiert. Jede Entscheidung beinhaltet immer eine Wahl zwischen zwei Optionen, <b>"Option A"</b> und <b>"Option B"</b>. Bei jeder dieser Entscheidungen müssen Sie sich nur entscheiden, ob Sie Option A oder Option B bevorzugen. In allen 21 Entscheidungen bleibt Option A gleich, aber Option B variiert.
+                <ul>
+                    <li><b>Option A</b> gibt Ihnen 100 Punkte mit 50% Wahrscheinlichkeit und 0 Punkte mit 50% Wahrscheinlichkeit.</li>
+                    <li><b>Option B</b> garantiert Ihnen eine gewisse Anzahl an Punkten. Wenn Sie in den Zeilen der Liste fortschreiten, erhöht sich der Betrag, den Sie unter dieser Option erhalten von 0 Punkten auf 100 Punkte.</li>
+                </ul>
+                Sobald Sie alle Entscheidungen getroffen haben, wird eine der 21 Entscheidungen zufällig ausgewählt, um Ihren Verdienst zu bestimmen. Wenn Sie bei dieser Entscheidung Option A bevorzugt haben, dann wird unser Algorithmus die Lotterie durchführen. Wenn Sie Option B bevorzugen, dann erhalten Sie die garantierte Anzahl von Punkten, die mit dieser Option in dieser Entscheidung verbunden ist. Beachten Sie, dass jede Entscheidung die ausgewählte Entscheidung sein könnte, die für Sie Auszahlungsrelevant ist. Es liegt also in Ihrem besten Interesse, jede Entscheidung so zu treffen, als ob sie diejenige sein könnte, die Ihre Auszahlung bestimmt.
+            </p>
+            <p>
+               <br>
+               <i>Hier ist ein Vorschlag der Ihnen helfen soll die Entscheidung zu treffen: Die meisten Leute bevorzugen zunächst <b>Option A</b> und wechseln dann zu <b>Option B</b>. Eine Möglichkeit diese Liste zu vervollständigen besteht also darin, die beste Zeile für den Wechsel von <b>Option A</b> zu <b>Option B</b> zu bestimmen.</i>
+                </p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+            </div>
+          </div>
+   </div>
+</div>
+
+    <div class="wrapper">
+
+        <!-- ------------------------------------------------------------------------------------------------------- -->
+        <!-- Progress Bar -->
+        <!-- ------------------------------------------------------------------------------------------------------- -->
+        {% if Constants.one_choice_per_page == True and Constants.progress_bar == True %}
+            <label>
+                {% blocktrans trimmed with page=page total=total %}
+                    Page {{ page }} of {{ total }}
+                {% endblocktrans %}
+            </label>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width:{{ progress|json }}%;">
+                    <span class="sr-only"></span>
+                </div>
+            </div>
+        {% endif %}
+
+
+        <!-- ------------------------------------------------------------------------------------------------------- -->
+        <!-- Table - Lottery Decisions (Accept/Reject) -->
+        <!-- ------------------------------------------------------------------------------------------------------- -->
+        {% if Constants.accept_reject == True and Constants.variation != 'sure_payoff' %}
+
+            <div class="card">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="header">
+                            <th class="lottery_left">{% trans "Lottery" %}</th>
+                            <th class="formfield">{% trans "Accept" %}</th>
+                            <th class="formfield">{% trans "Reject" %}</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for i,f,p,hi,lo,sp in choices %}
+                            <tr>
+                                <!-- lotteries -->
+                                <td class="lottery_left">
+                                    <b>{{ hi }}</b>
+                                    {% trans "with a probability of " %}{{ p|floatformat:1 }},
+                                    <b>{{ lo }}</b> {% trans "otherwise" %}
+                                </td>
+
+                                <!-- accept -->
+                                <td class="formfield">
+                                    <input type="radio" name="{{ f }}" value="A" required>
+                                </td>
+
+                                <!-- reject -->
+                                <td class="formfield">
+                                    <input type="radio" name="{{ f }}" value="B" required>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        <!-- ------------------------------------------------------------------------------------------------------- -->
+        <!-- Table - Lottery Decisions (Option A/B) -->
+        <!-- ------------------------------------------------------------------------------------------------------- -->
+        {% else %}
+
+            <div class="card">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="header">
+                            <th class="decision">#</th>
+                            <th class="lottery">{% trans "Option A" %}</th>
+                            <th class="formfield"></th>
+                            <th class="sure_payoff">Option B</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for i,f,p,hi,lo,sp,d in choices %}
+                            <tr class="decision">
+                                <!-- decision count -->
+                                <td>
+                                    {{ d }}
+                                </td>
+
+                                <!-- lotteries -->
+                                <td class="lottery">
+                                    Sie erhalten {{ hi }} mit {{ p|floatformat:1 }}% Wahrscheinlichkeit und {{ lo }} mit {{ p|floatformat:1 }}% Wahrscheinlichkeit
+                                </td>
+
+                                <!-- radio select form fields -->
+                                <td class="formfield">
+                                    <input type="radio" name="{{ f }}" value="A" required><input type="radio" name="{{ f }}" value="B" required>
+                                </td>
+
+                                <!-- sure payoff -->
+                                <td class="sure_payoff">
+                                    Sie erhalten {{ sp }} (sichere Zahlung)
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        {% endif %}
+    </div>
+
+    {% next_button %}
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load i18n %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** STYLES *** #}
+{# ****************************************************************************************************************** #}
+{% block styles %}
+    <link href="{% static 'cem/css/custom.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** TITLE *** #}
+{# ****************************************************************************************************************** #}
+{% block title %}
+    {% trans "Instructions" %}
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** CONTENT *** #}
+{# ****************************************************************************************************************** #}
+{% block content %}
+
+    <div class="wrapper instructions">
+        Now we start <b>Part 3</b> of the experiment.
+        <br>
+        <br>
+        <p>
+            {% blocktrans trimmed with n=Constants.num_choices %}
+                In the following, you'll face 21 decisions listed on your screen. Each decision is a paired choice between <b>"Option A"</b> and <b>"Option B"</b>. In this list:  
+                <ul>
+                    <li><b>Option A</b> will always be you receive 50 points with probability 50%, and 0 points with probability 50%.</li>
+                    <li><b>Option B</b> will be that you receive some amount of points for sure. As you proceed down the rows of the list, the amount you receive will increase from 0 points to 100 points.
+                </ul>
+            {% endblocktrans %}
+        </p>
+        <p>
+            {% blocktrans trimmed with hi=lottery_hi lo=lottery_lo p=probability %}
+               For each row in the list, all you have to do is to decide whether you prefer <b>Option A</b> or <b>Option B</b>. Indicate your preference by selecting the corresponding button. When you are finished, one of the 21 decisions will be randomly picked for your payoff.
+               <br>
+               <br>
+               <i>Hint: Most people begin by preferring <b>Option A</b> and then switch to <b>Option B</b>, so one way to complete this list is to determine the best row to switch from <b>Option A</b> to <b>Option B</b>.</i>
+            {% endblocktrans %}
+        </p>
+    </div>
+
+    <div class='container-fluid '>
+    <div class='row photo-container'>
+        <div class='col-md-2'>
+        </div>
+        <div class='col-md-4 photo-div'>
+        	<img src="{% static 'global/Photos/CL_english.png' %}">
+        </div>
+        <div class='col-md-2'>
+        </div>
+    </div>
+</div>
+
+    {% next_button %}
+{% endblock %}

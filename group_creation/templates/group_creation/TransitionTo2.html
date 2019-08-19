@@ -1,0 +1,26 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'global/CSS/instructions.css' %}"/>
+
+<div class="instructions">
+
+	<ul>
+		<li> We have now divided you and the rest of the participants into two groups based on your
+			expressed preferences over the two artists, Klee and Kandinsky, whose paintings you
+			saw.</li>
+		<li> Relative to the others, you have a preference for paintings by {{ group }}. Therefore, you have been assigned to the {{ group }} group. </li>
+		<li> The two groups will remain the same for the rest of the experiment. </li>
+		<li> The number of individuals in your own group is {{ group_players }}.</li>
+	</ul>
+	<p>Now, we will allow you to interact with your group members to solve a task. How well you do
+	will depend on your group’s ability to cooperate effectively.</p>
+
+</div>
+
+{% include Constants.submit_button_template %}
+
+{% endblock %}
+

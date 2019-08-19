@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'global/CSS/Bootstrap/css/bootstrap.min.css' %}"/>
+<link rel="stylesheet" href="{% static 'global/CSS/PhotoPage.css' %}" />
+<link rel="stylesheet" href="{% static 'global/CSS/instructions.css' %}"/>
+
+
+<div class="instructions">
+	<p> Sie sind ein Mitglied der <b>{{ group }}</b> Gruppe. </p>
+</div>
+
+<div class="instructions">
+	
+	<p>Auf den nächsten beiden Seiten sehen Sie jeweils ein Bild, das entweder von Klee oder Kandinsky gemalt wurde. Beantworten Sie bitte für jedes der Gemälde, welcher der beiden Künstler es Ihrer Meinung nach gemalt hat. Für jede richtige Antwort erhalten Sie {{ total_points }} Punkte. Sie haben für jedes Gemälde 5 Minuten Zeit um Ihre Antwort zu übermitteln. Als Hilfestellung finden Sie am Ende der Seite den jeweiligen Künstler der 10 Gemälde die Sie bereits gesehen haben.</p>
+
+	<p>Außerdem können Sie ein Chat Programm verwenden, durch das Sie mit Ihren Gruppenmitgliedern kommunizieren können. Zur Beantwortung der beiden Fragen können Sie Hilfe von anderen Mitgliedern Ihrer eigenen Gruppe erhalten oder anderen Mitgliedern helfen. Ausgenommen der unten genannten Einschränkungen können Sie in das untere Feld des Chatprogramms eingeben, was immer Sie möchten. Nachrichten werden nur Ihren Gruppenmitgliedern angezeigt. Sie können Nachrichten anderer Gruppen nicht einsehen. Teilnehmer aus den anderen Gruppen können Nachrichten Ihrer Gruppe ebenfalls nicht einsehen. </p>
+
+	<b>Einschränkungen für Nachrichten</b>
+	<ol>
+		<li>Bitte geben Sie Ihre Identität nicht preis und senden Sie keine persönlichen Informationen (z.B. Alter, Ethnie, Bildung oder beruflicher Hintergrund, etc.). </li>
+		<li>Bitte verwenden Sie keine obszöne oder beleidigende Ausdrucksweise. </li>
+	</ol>
+
+	<p>Nachdem Sie auf „Weiter“ gedrückt haben, haben Sie 5 Minuten Zeit um die folgenden Fragen zu Beantworten.</p>
+
+</div>
+
+{% include Constants.submit_button_template %}
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,28 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load otree static otree_tools %}
+
+{% block content %}
+    {% tracking_time %}
+    {% tracking_focus %}
+
+    {% include Constants.header_template %}
+
+    <div class="instructions">
+	       You are matched with two participants; one from your own group and one from the other group.
+      <ul>
+          <li> There are 100 points to be distributed amongst the two of them. </li>
+          <li> Your task is to decide how to divide these points between the two. </li>
+          <li> The two individuals get the number of points you choose to give them. </li>
+          <li> The number of points that you get will be decided by an even chance lottery that will be played out by our algorithm (e.g., the toss of a fair coin is an even chance lottery). With 50 % chance you will get the number of points you give to the member of your group and with 50% chance the number of points you give to the member of the other group.</li>
+      </ul>
+ 	  </div>
+
+    <div>
+        Please enter the points you want to give to the other two (no. of points can be anything from 0 to 100) :
+    </div>
+
+    {% include Constants.fields_and_styling_template %}
+
+{% endblock %}
+

@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+<!-- CSS Stylesheets -->
+<link rel="stylesheet" href="{% static 'global/CSS/instructions.css' %}"/>
+
+<!-- Some JavaScript code -->
+<script>
+	$(document).ready(function() {
+		$(".otree-btn-next").text("I Agree");
+	})
+</script>
+
+<!-- Instruction Div -->
+<div class=instructions>
+	<p>
+    	Please do not talk to each other during the experiment. All communication that happens and choices that are made will have to be through your terminal interface. It is imperative that you maintain silence. In case of a technical problem, please raise your hand, and a volunteer will come to help you.
+	</p>
+</div>
+
+<!-- Submit Button div -->
+<div class='container-fluid'>
+	<div class='row'>
+		<div class='col-md text-center'>
+			{% next_button %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+

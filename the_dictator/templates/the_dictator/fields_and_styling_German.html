@@ -1,0 +1,78 @@
+{% load otree %}
+
+{% csrf_token %}
+<br>
+    {% for field in form  %}
+    	{% cycle True True False as fillable_fields silent %} 
+    		{% if fillable_fields %} 
+            	<div class="row">
+              		<div class="col-4">
+                		{{ field.label_tag }}
+              		</div>
+              		<div class="col-8">
+                		{{ field }} 
+              		</div>
+            	</div>
+                <br>
+<!-- Since we need to add a plus sign, the cycle tag executes this code only once and then not for the remaining iterations -->
+
+			{% cycle True False as even_row silent %} 
+        		{% if even_row %} 
+            		<div class="row">
+            			<div class="col-4">
+              			</div>
+              			<div class="col-8 plus_sign">
+                			<h2>+</h2>
+              			</div>
+        		{% endif %}
+            		</div> 
+
+        	{% endif %}
+            <br>
+    
+    {% endfor %}
+
+    <div class="row">
+        <div class="col-4">
+        </div>
+        <div class="col-8 plus_sign">
+            <h2>=</h2>
+        </div>
+    </div>
+    <br>
+
+
+    <div class="row">
+        <div class="col-4">
+            Gesamt
+        </div>
+        <div class="col-8">
+        	<div class="input-group input-group-narrow">
+            	<input type = "number" name="total" id="id_my_hidden_input" value="100" disabled="disabled" class='form-control'/> 
+            	<div class="input-group-append">
+                	<span class="input-group-text">Punkte</span>
+              	</div>
+          	</div>
+        </div>
+    </div>
+    
+<br>
+
+<div class="row next_button">
+	<div class="col-12">
+        {% next_button %}
+    </div>
+</div>
+
+    <!-- CSS : Inline because it's legit one line. Okay fine, maybe it's two go away. -->
+<style>
+	.plus_sign{
+        padding-left: 5%;
+    }
+    .next_button{
+        text-align: center;
+    }
+    input[type="number"]:disabled {
+        background: #ffffff;
+    }
+</style>

@@ -1,0 +1,14 @@
+{% load otree %}
+
+<link rel="stylesheet" href="{% static 'global/CSS/instructions.css' %}"/>
+<link rel="stylesheet" href="{% static 'global/CSS/Bootstrap/css/bootstrap.min.css' %}"/>
+
+<script>
+  $(document).ready(function() {
+    $(".otree-btn-next").text("Ausführen");
+  })
+</script>
+
+<div class="instructions">
+  <p> Sie sind ein Mitglied der <b>{{ group }}</b> Gruppe. </p>
+</div>

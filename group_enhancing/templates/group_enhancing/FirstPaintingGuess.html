@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+
+<div class="instructions">
+    <p> Your group is <b>{{ artist_group }}</b>. </p>
+</div>
+
+<div class="container-fluid">
+	<u>Question 1:</u> Which artist, Klee or Kandinsky, made the following painting?
+</div>
+
+<div class='container-fluid '>
+    <div class='row photo-container'>
+        <div class='col-md-4'>
+        </div>
+        <div class='col-md-4 photo-div'>
+        	<img src="{% static 'global/Photos/6A.jpeg' %}">
+        </div>
+        <div class='col-md-4'>
+        </div>
+    </div>
+</div>
+
+{% include Constants.instructions_and_chat_template %}
+
+{% include Constants.modal_and_misc_template %}
+
+{% endblock %}

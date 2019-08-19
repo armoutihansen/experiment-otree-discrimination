@@ -1,0 +1,23 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'global/CSS/instructions.css' %}"/>
+
+<div class=instructions>
+
+    <p>Im <b>1. Teil</b> des Experiments, werden jedem von Ihnen 5 Gemäldepaare von zwei Künstlern (<b>Klee</b> und <b>Kandinsky</b>) präsentiert. Sie und die anderen Teilnehmer werden gebeten jeweils Ihre Präferenzen zu jedem Bildpaar anzugeben. Sie alle werden dann in eine von zwei Gruppen eingeteilt, je nachdem welchen Künstler Sie im Vergleich zu den anderen Teilnehmern bevorzugen.</p>
+
+	<p>Anschließend werden Sie gebeten, Fragen zu zwei weiteren Bildern dieser beiden Künstler zu beantworten.
+        Durch die korrekte Beantwortung dieser Fragen können Sie Punkte verdienen. Während Sie diese Fragen beantworten,
+        haben Sie die Möglichkeit über ein Chat Programm mit anderen Teilnehmern Ihrer Gruppe zu kommunizieren.
+        Über diese Benutzeroberfläche können Sie Hilfe von anderen Mitgliedern Ihrer Gruppe erhalten oder ihnen Hilfe
+        anbieten, um diese Fragen zu beantworten.</p>
+
+
+</div>
+
+{% include Constants.submit_button_template %}
+
+{% endblock %}
+

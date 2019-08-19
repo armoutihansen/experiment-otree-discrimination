@@ -1,0 +1,39 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+
+<div class="instructions">
+    <p> Sie sind ein Mitglied der <b>{{ artist_group }}</b> Gruppe. </p>
+</div>
+
+<div class="container-fluid">
+	<u>Frage 1:</u> Welcher Künstler, Klee oder Kandinsky, hat das folgende Bild gemalt (Bitte scrollen Sie nach unten)?
+</div>
+
+<div class="instructions">
+<ul>
+    <li> Wenn Sie fertig sind, klicken Sie auf den Klee oder Kandinsky Button und Senden Sie Ihre Antwort. </li>
+    <li> Benutzen Sie das Chat Fenster am unteren rechten Rand um mit Ihren Gruppenmitgliedern zu kommunizieren. </li>
+    <li> Den Antwortschlüssel zu den 5 Bildpaaren von vorher finden Sie unten auf Ihrem Bildschirm. </li>
+    <li> Sie können oben auf Ihrem Bildschirm ablesen wie viel Zeit Ihnen noch bleibt.</li>
+</ul>
+</div>
+
+<div class='container-fluid '>
+    <div class='row photo-container'>
+        <div class='col-md-4'>
+        </div>
+        <div class='col-md-4 photo-div'>
+        	<img src="{% static 'global/Photos/6A.jpeg' %}">
+        </div>
+        <div class='col-md-4'>
+        </div>
+    </div>
+</div>
+
+{% include Constants.instructions_and_chat_template %}
+
+{% include Constants.modal_and_misc_template %}
+
+{% endblock %}

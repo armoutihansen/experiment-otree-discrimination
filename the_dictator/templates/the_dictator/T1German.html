@@ -1,0 +1,28 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% load otree static otree_tools %}
+
+{% block content %}
+    {% tracking_time %}
+    {% tracking_focus %}
+
+    {% include Constants.header_template %}
+
+
+    <div class="instructions">
+        Sie sind nun mit zwei Teilnehmern gepaart; einem aus Ihrer eigenen und einem aus der anderen Gruppe.
+        <ul>
+            <li> Es gibt 100 Punkte, die zwischen den beiden verteilt werden müssen.</li>
+            <li> Ihre Aufgabe besteht darin diese Punkte zwischen den beiden aufzuteilen.</li>
+            <li> Die beiden Teilnehmer erhalten die Anzahl an Punkten die Sie Ihnen zuteilen.</li>
+            <li> Sie erhalten den Durchschnitt der Summe der Punkte der anderen beiden Teilnehmer. </li>
+        </ul>
+    </div>
+    
+    <div>
+        Bitte tragen Sie die Punkte ein, die Sie den anderen beiden zuteilen möchten (Anzahl an Punkten kann alles zwischen 0 und 100 sein):
+    </div>
+
+  {% include Constants.fields_and_styling_template %}
+
+{% endblock %}

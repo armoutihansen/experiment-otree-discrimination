@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %} Kontrollfragen {% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'global/CSS/instructions.css' %}"/>
+Bitte beantworten Sie die folgenden Kontrollfragen bevor wir fortfahren. Diese Fragen sollen sicherstellen, dass Sie verstanden haben wie Prozentsätze, Durchschnitte und Lotterien funktionieren. Ihre Antworten auf diese Fragen hat keinen Einfluss darauf wie viel Sie in diesem Experiment verdienen.
+<div class="instructions">
+	<div class="instructions-header">
+
+	</div>
+    <u>1. Prozentrechnung:</u> Angenommen, wir möchten X% von Y berechnen. Eine einfache Formel zur Berechnung ist wie folgt: (X/100)*Y
+	{% formfield player.percentage_question_1 %}
+    {% formfield player.percentage_question_2 %}
+</div>
+<div class="instructions">
+    <u>2. Durchschnitte:</u> Angenommen, wir möchten den Durchschnitt von X und Y berechnen. Eine einfache Formel zur Berechnung lautet wie folgt: (X+Y)/2
+    {% formfield player.average_question_1 %}
+    {% formfield player.average_question_2 %}
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md text-center">
+			{% next_button %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %} Verständnisfragen {% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'global/CSS/instructions.css' %}"/>
+Bevor Sie Ihre Entscheidungen treffen, beantworten Sie bitte die folgenden Fragen, um sicherzugehen, dass Sie die Aufgabe verstanden haben.
+    <br>
+    <br>
+    Im folgenden sehen Sie wie ein HYPOTHETISCHER TEILNEHMER 6 der 21 Entscheidungen in der Liste treffen könnte (eine Entscheidung für jede der 6 Reihen).
+    <br>
+    <br>
+<div class='container-fluid '>
+    <div class='row photo-container'>
+        <div class='col-md-0'>
+        </div>
+        <div class='col-md-4 photo-div'>
+        	<img src="{% static 'global/Photos/CL_Frage.png' %}">
+        </div>
+        <div class='col-md-0'>
+        </div>
+    </div>
+</div>
+
+<div class="instructions">
+	<div class="instructions-header">
+
+	</div>
+    <b><u>Frage 1:</u></b>
+    {% formfield player.mpl_question_1 %}
+    <b><u>Frage 2:</u></b>
+    {% formfield player.mpl_question_2 %}
+    Bitte wählen Sie jeweils die richtige Antwort aus.
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md text-center">
+			{% next_button %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+
+{% include Constants.instructions_and_style_template %}
+
+<!-- Photos and Slider Div -->
+<div class='container-fluid'>
+    <div class='row photo-container'>
+        <div class='col-md-4 photo-div'>
+            <img src= "{% static 'global/Photos/5A.jpg' %}">
+        </div>
+        <div class='col-md-4 slider'>
+            {{form.level5}}
+        </div>
+        <div class='col-md-4 photo-div'>
+            <img src= "{% static 'global/Photos/5B.jpg' %}">
+        </div>
+    </div>
+</div>
+
+{% include Constants.submit_button_template %}
+
+
+{% endblock %}
+

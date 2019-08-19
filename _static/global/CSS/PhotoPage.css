@@ -1,0 +1,25 @@
+audio{
+	width:100%;
+}
+.photo-container{
+	padding: 42px 0 42px 0;
+}
+.slider {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+img {
+   height: 100%;
+   width: 100%;
+}
+.photo-div{
+	height: 450px;
+	width: 700px;
+}
+.modal-photo{
+	margin: 0 0 42px 0;
+}
+.show-modal-button{
+	margin: 0 1% 0 1%;
+}

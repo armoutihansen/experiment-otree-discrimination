@@ -1,0 +1,40 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Instruktionen
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'global/CSS/instructions.css' %}"/>
+<link rel="stylesheet" href="{% static 'global/CSS/Bootstrap/css/bootstrap.min.css' %}"/>
+
+<div class="instructions">
+	<p> Sie sind ein Mitglied der <b>{{ group }}</b> Gruppe. </p>
+</div>
+
+<div class="instructions">
+<p>
+	Jetzt beginnt der <b>2. Teil</b> des Experiments.
+	<ul>
+		<li>Es gibt zwei Runden in denen Sie Entscheidungen treffen müssen.</li>
+		<li>In jeder Runde werden Sie mit zwei anderen Teilnehmern gepaart. Einer der Teilnehmer wird aus Ihrer eigenen Gruppe kommen, der andere aus der anderen Gruppe. </li>
+		<li>Diese Paarungen variieren von Runde zu Runde.</li>
+	</ul>
+</p>
+<p>
+	<b> Auszahlung </b>
+	<ul>
+		<li> Nachdem alle Entscheidungen getroffen wurden wird eine der beiden Runden zufällig ausgewählt. </li>
+		<li> Jede Runde hat dabei die gleiche Wahrscheinlichkeit ausgewählt zu werden.</li>
+		<li> Der Betrag den Sie in dieser Runde verdienen stellt Ihre Auszahlung für den 2. Teil des Experiments dar. Außerdem wird bestimmt, was Ihre in dieser Runde zugeteilten Partner in diesem Teil des Experiments verdienen. </li>
+	</ul>
+	Treffen Sie daher Ihre Entscheidungen in jeder Runde so, als ob dies die Runde wäre, die Ihren und den Gewinn Ihrer zugeteilten Partner aus diesem Teil des Experiments bestimmt.
+</p> 
+</div>
+
+{% include Constants.submit_button_template %}
+
+{% endblock %}
+
+

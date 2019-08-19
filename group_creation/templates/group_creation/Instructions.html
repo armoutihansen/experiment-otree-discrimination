@@ -1,0 +1,23 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'global/CSS/instructions.css' %}"/>
+
+<div class=instructions>
+
+	<p>In Part 1 of the experiment, everyone will be presented with 5 pairs of paintings by two artists. You and the other participants will be asked to indicate your relative preference over each pair. All of you will then be classified into one of two groups based on which artist you prefer relative to the others.</p>
+
+	<p>Then you will be asked to answer questions on two other paintings by these two artists. Correctly
+	answering these questions will earn you points. While answering these questions we will allow you to
+	communicate with other members from your group through a chat program. Using this, you can get help
+	from or offer help to other members in your own group to answer these questions.</p>
+
+	<p>You may get help from or help other members in your own group while answering the questions.</p>
+
+</div>
+
+{% include Constants.submit_button_template %}
+
+{% endblock %}
+

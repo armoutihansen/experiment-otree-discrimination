@@ -1,0 +1,29 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'global/CSS/instructions.css' %}"/>
+
+<script>
+	$(document).ready(function() {
+		$(".otree-btn-next").text("I Agree");
+	})
+</script>
+
+<div class="instructions">
+
+	<p>Before we proceed, please agree that you will not discuss any details pertaining to this experiment with anyone else. This is important for the experiment to be conducted in a credible way. </p>
+
+</div>
+
+<div class='container-fluid'>
+	<div class='row'>
+		<div class='col-md text-center'>
+			{% next_button %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+

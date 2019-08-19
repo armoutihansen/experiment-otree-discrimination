@@ -1,0 +1,14 @@
+{% load otree %}
+
+<link rel="stylesheet" href="{% static 'global/CSS/instructions.css' %}"/>
+<link rel="stylesheet" href="{% static 'global/CSS/Bootstrap/css/bootstrap.min.css' %}"/>
+
+<script>
+  $(document).ready(function() {
+    $(".otree-btn-next").text("Submit");
+  })
+</script>
+
+<div class="instructions">
+  <p> Your group is <b>{{ group }}</b>. </p>
+</div>

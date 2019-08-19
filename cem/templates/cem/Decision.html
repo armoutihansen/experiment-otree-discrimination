@@ -1,0 +1,189 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load i18n %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** STYLES *** #}
+{# ****************************************************************************************************************** #}
+{% block styles %}
+    <link href="{% static 'cem/css/custom.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** SCRIPTS *** #}
+{# ****************************************************************************************************************** #}
+{% block scripts %}
+    {% if Constants.enforce_consistency == True %}
+        {% if Constants.one_choice_per_page == False and Constants.random_order == False %}
+            <script src="{% static 'cem/js/consistency.js' %}"></script>
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** TITLE *** #}
+{# ****************************************************************************************************************** #}
+{% block title %}
+    {% trans "Your Decision" %}
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** CONTENT *** #}
+{# ****************************************************************************************************************** #}
+{% block content %}
+
+<div class="show-modal-button">
+    <div class="row">
+        <div class="col text-center">
+            <button type="button" class="btn btn-info instruction-button" data-toggle="modal" data-target="#instructions_modal">Instructions</button>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+
+<!-- Modal -->
+<div id="instructions_modal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2> Instructions </h2>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    In the following, you'll face 21 decisions listed on your screen. Each decision is a paired choice between <b>"Option A"</b> and <b>"Option B"</b>. In this list:
+                    <ul>
+                        <li><b>Option A</b> will always be you receive 50 points with probability 50%, and 0 points with probability 50%.</li>
+                        <li><b>Option B</b> will be that you receive some amount of points for sure. As you proceed down the rows of the list, the amount you receive will increase from 0 points to 100 points.
+                    </ul>
+                </p>
+                <p>
+                    For each row in the list, all you have to do is to decide whether you prefer <b>Option A</b> or <b>Option B</b>. Indicate your preference by selecting the corresponding button. When you are finished, one of the 21 decisions will be randomly picked for your payoff.
+                    <br>
+                    <br>
+                    <i>Hint: Most people begin by preferring <b>Option A</b> and then switch to <b>Option B</b>, so one way to complete this list is to determine the best row to switch from <b>Option A</b> to <b>Option B</b>.</i>
+                </p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+   </div>
+</div>
+
+    <div class="wrapper">
+
+        <!-- ------------------------------------------------------------------------------------------------------- -->
+        <!-- Progress Bar -->
+        <!-- ------------------------------------------------------------------------------------------------------- -->
+        {% if Constants.one_choice_per_page == True and Constants.progress_bar == True %}
+            <label>
+                {% blocktrans trimmed with page=page total=total %}
+                    Page {{ page }} of {{ total }}
+                {% endblocktrans %}
+            </label>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width:{{ progress|json }}%;">
+                    <span class="sr-only"></span>
+                </div>
+            </div>
+        {% endif %}
+
+
+        <!-- ------------------------------------------------------------------------------------------------------- -->
+        <!-- Table - Lottery Decisions (Accept/Reject) -->
+        <!-- ------------------------------------------------------------------------------------------------------- -->
+        {% if Constants.accept_reject == True and Constants.variation != 'sure_payoff' %}
+
+            <div class="card">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="header">
+                            <th class="lottery_left">{% trans "Lottery" %}</th>
+                            <th class="formfield">{% trans "Accept" %}</th>
+                            <th class="formfield">{% trans "Reject" %}</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for i,f,p,hi,lo,sp in choices %}
+                            <tr>
+                                <!-- lotteries -->
+                                <td class="lottery_left">
+                                    <b>{{ hi }}</b>
+                                    {% trans "with a probability of " %}{{ p|floatformat:1 }},
+                                    <b>{{ lo }}</b> {% trans "otherwise" %}
+                                </td>
+
+                                <!-- accept -->
+                                <td class="formfield">
+                                    <input type="radio" name="{{ f }}" value="A" required>
+                                </td>
+
+                                <!-- reject -->
+                                <td class="formfield">
+                                    <input type="radio" name="{{ f }}" value="B" required>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        <!-- ------------------------------------------------------------------------------------------------------- -->
+        <!-- Table - Lottery Decisions (Option A/B) -->
+        <!-- ------------------------------------------------------------------------------------------------------- -->
+        {% else %}
+
+            <div class="card">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="header">
+                            <th>{% trans "Decision" %}</th>
+                            <th class="lottery">{% trans "Option A" %}</th>
+                            <th class="formfield"></th>
+                            <th class="sure_payoff">{% trans "Option B" %}</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for i,f,p,hi,lo,sp,d in choices %}
+                            <tr>
+                                <!-- decision count -->
+                                <td>
+                                    {{ d }}
+                                </td>
+
+                                <!-- lotteries -->
+                                <td class="lottery">
+                                    You receive {{ hi }} {%  trans "with" %} {{ p|floatformat:1 }}% chance and {{ lo }} {%  trans "with" %} {{ p|floatformat:1 }}% chance
+                                </td>
+
+                                <!-- radio select form fields -->
+                                <td class="formfield">
+                                    <input type="radio" name="{{ f }}" value="A" required><input type="radio" name="{{ f }}" value="B" required>
+                                </td>
+
+                                <!-- sure payoff -->
+                                <td class="sure_payoff">
+                                    You receive {{ sp }} {% trans "(sure payoff)" %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        {% endif %}
+    </div>
+
+    {% next_button %}
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+<!-- CSS Stylesheets -->
+<link rel="stylesheet" href="{% static 'global/CSS/instructions.css' %}"/>
+
+<!-- Some JavaScript code -->
+<script>
+	$(document).ready(function() {
+		$(".otree-btn-next").text("Ich stimme zu");
+	})
+</script>
+
+<!-- Instruction Div -->
+<div class=instructions>
+	<p>
+    	Bitte sprechen Sie während des Experiments nicht miteinander. Die gesamte Kommunikation, die stattfindet und die Entscheidungen, die getroffen werden, müssen über Ihren Computer erfolgen. Es ist äußerst wichtig, dass Sie Stille bewahren. Falls technische Probleme auftreten sollten, heben Sie bitte Ihre Hand und ein Helfer wird Ihnen zu Hilfe kommen.
+	</p>
+</div>
+
+<!-- Submit Button div -->
+<div class='container-fluid'>
+	<div class='row'>
+		<div class='col-md text-center'>
+			{% next_button %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+

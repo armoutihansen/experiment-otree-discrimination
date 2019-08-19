@@ -1,0 +1,85 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'global/CSS/instructions.css' %}"/>
+<div class="instructions">
+	<div class="group_enhancing_payoff">
+	<b>Ihr Verdienst im 1. Teil des Experiments:</b>
+	<br>
+	<br>
+    <table border="1">
+  <tr>
+    <th>Frage</th>
+    <th>Ihre Antwort</th>
+    <th>Richtige Antwort</th>
+    <th>Punkte</th>
+  </tr>
+  <tr>
+    <td>Frage 1</td>
+    <td>{{participant.vars.painting_guesses.0}}</td>
+    <td>Klee</td>
+    <td>{{participant.vars.group_enhancing_payoff.0}} Punkte.</td>
+  </tr>
+  <tr>
+    <td>Frage 2</td>
+    <td>{{participant.vars.painting_guesses.1}}</td>
+    <td>Kandinsky</td>
+    <td>{{participant.vars.group_enhancing_payoff.1}} Punkte.</td>
+  </tr>
+</table>
+
+	</div>
+	<br>
+	<div class="the_dictator_payoff">
+        <b>Ihr Verdienst im 2. Teil des Experiments:</b>
+    <br>
+    <br>
+    {% if participant.vars.dictator %}
+        In der Runde die zur Auszahlung ausgewählt wurde, , haben Sie, basierend auf Ihrer Aufteilung der Punkte zwischen den beiden mit Ihnen gepaarten Teilnehmer (einer aus Ihrer, einer aus der anderen Gruppe) {{participant.vars.the_dictator_payoff}} erhalten.
+    {% else %}
+        In der Runde die zur Auszahlung ausgewählt wurde, wurden Ihnen {{participant.vars.the_dictator_payoff}} zugeteilt.
+    {% endif %}
+	</div>
+	<br>
+	<div class="scl_payoff">
+        <b>Ihr Verdienst im 3. Teil des Experiments:</b>
+        <br>
+        <br>
+        Von unserem Algorithmus wurde Entscheidung Nummer {{ c_t_p }} als auszahlungsrelevante Entscheidung ausgewählt.
+        {% if participant.vars.cem_option_to_pay == 'B' %}
+        Für diese Entscheidung haben Sie die sichere Auszahlung gewählt. Daher erhalten Sie in diesem Teil eine Vergütung von {{participant.vars.cem_payoff}}.
+        {% else %}
+        Für diese Entscheidung haben Sie die Lotterie Option gewählt. Unser Algorithmus hat die Lotterie durchgeführt. Daraus resultiert für Sie in diesem Teil eine Vergütung von {{participant.vars.cem_payoff}}.
+        {% endif %}
+	</div>
+	<br>
+	<div class="final_points">
+        <b>Ihr Gesamtverdienst aus diesem Experiment in Punkten ist daher:</b>
+		{{final_payoff}}.
+	</div>
+	<br>
+	<div class="participation_fee">
+        <b>Ihre Teilnahmevergütung ist:</b>
+		{{participation_fee}}.
+	</div>
+	<br>
+	<div class="final_currency">
+        <b>Mit der Umrechnung von 10 Punkte = €1,00, ergibt sich Ihr Gesamtverdienst in Euro:</b>
+		{{payoff_in_euros}}
+	</div>
+    <br>
+Bitte klicken Sie auf "Weiter" um fortzufahren.
+</div>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md text-center">
+			{% next_button %}
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+

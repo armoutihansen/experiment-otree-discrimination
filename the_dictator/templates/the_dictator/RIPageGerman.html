@@ -1,0 +1,39 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Instruktionen
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'global/CSS/instructions.css' %}"/>
+<link rel="stylesheet" href="{% static 'global/CSS/Bootstrap/css/bootstrap.min.css' %}"/>
+
+<div class="instructions">
+	<p> Sie sind ein Mitglied der <b>{{ group }}</b> Gruppe. </p>
+</div>
+
+<div class="instructions">
+<p>
+	Jetzt beginnt der <b>2. Teil</b> des Experiments. Dieser besteht aus zwei Runden
+	<ul>
+		<li>In jeder Runde werden Sie mit zwei anderen Teilnehmern gepaart.</li>
+		<li>Diese Paarungen variieren von Runde zu Runde. </li>
+		<li>Unser Algorithmus wählt zufällig einen der drei Teilnehmer um Entscheidungen zu treffen. Sie wurden nicht ausgewählt. Deshalb hängt Ihr Verdienst aus diesem Teil des Experiments von Entscheidungen ab, die einer der beiden Teilnehmer mit denen Sie gepaart wurden trifft. </li>
+	</ul>
+</p>
+<p>
+	<b> Auszahlung </b>
+	<ul>
+		<li> Eine der Runden wird zufällig ausgewählt und der Betrag den Sie in dieser Runde verdienen stellt Ihren Verdienst aus diesem Teil des Experiments dar.</li>
+	</ul>
+	Während die tatsächlichen Entscheidungen getroffen werden würden wir von Ihnen gerne Wissen, wie Sie diese Entscheidungen getroffen hätten, wenn Sie der Entscheider gewesen wären. Wir bitten Sie darum diese hypothetischen Entscheidungen so zu treffen, als ob Ihre und die tatsächlichen Auszahlungen der anderen Teilnehmer in dieser Runde davon abhängen würden. Nehmen Sie dabei an, dass einer der Teilnehmer aus Ihrer eigenen Gruppe kommt und der andere aus der anderen Gruppe.
+</p> 
+</div>
+
+{% include Constants.submit_button_template %}
+
+
+{% endblock %}
+
+

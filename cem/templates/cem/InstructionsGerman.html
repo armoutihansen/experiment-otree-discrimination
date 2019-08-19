@@ -1,0 +1,64 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load i18n %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** STYLES *** #}
+{# ****************************************************************************************************************** #}
+{% block styles %}
+    <link href="{% static 'cem/css/custom.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** TITLE *** #}
+{# ****************************************************************************************************************** #}
+{% block title %}
+    {% trans "Instructions" %}
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** CONTENT *** #}
+{# ****************************************************************************************************************** #}
+{% block content %}
+
+    <div class="wrapper instructions">
+        Wir starten nun mit dem  <b>3. Teil</b> des Experiments. In diesem Teil beeinflussen Ihre Entscheidungen nur Ihre Auszahlung.
+        <br>
+        <br>
+        <p>
+                Nachfolgend werden Ihnen 21 Entscheidungspaare präsentiert (Unten auf dem Bildschirm sehen Sie ein Beispiel einer solchen Liste). Jede Entscheidung beinhaltet immer eine Wahl zwischen zwei Optionen, <b>"Option A"</b> und <b>"Option B"</b>. Bei jeder dieser Entscheidungen müssen Sie sich nur entscheiden, ob Sie Option A oder Option B bevorzugen. In allen 21 Entscheidungen bleibt Option A gleich, aber Option B variiert.
+                <ul>
+                    <li><b>Option A</b> gibt Ihnen 100 Punkte mit 50% Wahrscheinlichkeit und 0 Punkte mit 50% Wahrscheinlichkeit.</li>
+                    <li><b>Option B</b> garantiert Ihnen eine gewisse Anzahl an Punkten. Wenn Sie in den Zeilen der Liste fortschreiten, erhöht sich der Betrag, den Sie unter dieser Option erhalten von 0 Punkten auf 100 Punkte.</li>
+                </ul>
+                Sobald Sie alle Entscheidungen getroffen haben, wird eine der 21 Entscheidungen zufällig ausgewählt, um Ihren Verdienst zu bestimmen. Wenn Sie bei dieser Entscheidung Option A bevorzugt haben, dann wird unser Algorithmus die Lotterie durchführen. Wenn Sie Option B bevorzugen, dann erhalten Sie die garantierte Anzahl von Punkten, die mit dieser Option in dieser Entscheidung verbunden ist. Beachten Sie, dass jede Entscheidung die ausgewählte Entscheidung sein könnte, die für Sie Auszahlungsrelevant ist. Es liegt also in Ihrem besten Interesse, jede Entscheidung so zu treffen, als ob sie diejenige sein könnte, die Ihre Auszahlung bestimmt.
+        </p>
+        <p>
+               <br>
+               <i>Hier ist ein Vorschlag der Ihnen helfen soll die Entscheidung zu treffen: Die meisten Leute bevorzugen zunächst <b>Option A</b> und wechseln dann zu <b>Option B</b>. Eine Möglichkeit diese Liste zu vervollständigen besteht also darin, die beste Zeile für den Wechsel von <b>Option A</b> zu <b>Option B</b> zu bestimmen.</i>
+               <br>
+                <br>
+                Ein Beispiel einer solchen Liste der 21 Entscheidungen ist unten aufgeführt. Werfen Sie einen Blick darauf. Aber bevor Sie Ihre eigentlichen Entscheidungen treffen, möchten wir Sie bitten einige Fragen zu beantworten um sicherzustellen, dass Sie verstehen, wie Ihre Einnahmen in Abhängigkeit Ihrer Entscheidungen bestimmt werden. Klicken Sie auf den Weiter Button unten auf dem Bildschirm um zu diesen Fragen zu gelangen.
+                <br>
+                <br>
+                Bitte klicken Sie unterhalb der Beispiel Liste auf "Weiter" um fortzufahren.
+        </p>
+    </div>
+
+    <div class='container-fluid '>
+    <div class='row photo-container'>
+        <div class='col-md-1'>
+        </div>
+        <div class='col-md-4 photo-div'>
+        	<img src="{% static 'global/Photos/CL_Deutsch.png' %}">
+        </div>
+        <div class='col-md-1'>
+        </div>
+    </div>
+</div>
+
+    {% next_button %}
+{% endblock %}

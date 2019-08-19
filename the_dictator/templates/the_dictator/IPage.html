@@ -1,0 +1,40 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Instructions
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'global/CSS/instructions.css' %}"/>
+<link rel="stylesheet" href="{% static 'global/CSS/Bootstrap/css/bootstrap.min.css' %}"/>
+
+<div class="instructions">
+	<p> Your group is <b>{{ group }}</b>. </p>
+</div>
+
+<div class="instructions">
+<p>
+	Now we start <b>Part 2</b> of the experiment.
+	<ul>
+		<li>There will be two rounds and you will be asked to make decisions in each.</li>
+		<li>For each round you will be matched with two other participants. One will be from your own group and the other from the other group. </li>
+		<li>These matches will vary from round to round.</li>
+	</ul>
+</p>
+<p>
+	<b> Payments </b>
+	<ul>
+		<li> After all decisions are taken, one of the two rounds will be randomly chosen. </li>
+		<li> Every round has an equal chance of being chosen.</li>
+		<li> The amount of money you earned in that round will be your payment from this part of the experiment. It will also determine what your matches in this round earn from this part of the experiment. </li>
+	</ul>
+	Therefore, make your decisions in each round as if this is the round that determines the earnings of you and your matches from this part of the experiment.
+</p> 
+</div>
+
+{% include Constants.submit_button_template %}
+
+{% endblock %}
+
+

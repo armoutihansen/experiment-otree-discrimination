@@ -1,0 +1,28 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'global/CSS/instructions.css' %}"/>
+
+<div class="instructions">
+	<p>
+		<ul>
+			<li>Dies ist ein Entscheidungsfindungsexperiment. Die Höhe des Geldbetrags, den Sie und andere Teilnehmer in diesem Experiment verdienen werden, hängt von Ihren und den Entscheidungen der anderen Teilnehmer ab.</li>
+			<li> Dieses Experiment besteht aus 3 Teilen. Ihr Gesamtverdienst ergibt sich aus der Summe Ihrer Einnahmen in diesen Teilen und einer Teilnahmevergütung.</li>
+			<li> Ihre Einnahmen werden in Punkten angegeben, die am Ende des Experiments in Euro umgewandelt werden. Die Punkt-zu-Euro Umrechnung sieht folgendermaßen aus:
+				<ul>
+					<li>10 Punkte = €1.00</li>
+				</ul>
+			</li>
+            <li> Sie erhalten eine Teilnahmevergütung von €4.00 </li>
+            <li> Bitte beachten Sie, dass Sie erst am Ende des Experiments erfahren werden wie viel Sie verdient haben.</li>
+			<li> Am Ende des Experiments wird jeder Teilnehmer privat ausgezahlt. Sie sind nicht verpflichtet anderen mitzuteilen wie viel Sie verdient haben.</li>
+			<li> Die Daten die während dieses Experiments erfasst werden, werden vertraulich und anonym gehalten. Die Entscheidungen die Sie treffen oder die von Ihnen geäußerten Ansichten werden nicht verwendet, um Ihre Identität an Dritte zu offenbaren, einschließlich der Experimentatoren. </li>
+		</ul>
+	</p>
+</div>
+
+{% include Constants.submit_button_template %}
+
+{% endblock %}

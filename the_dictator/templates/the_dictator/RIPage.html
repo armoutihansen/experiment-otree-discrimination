@@ -1,0 +1,40 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Instructions
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'global/CSS/instructions.css' %}"/>
+<link rel="stylesheet" href="{% static 'global/CSS/Bootstrap/css/bootstrap.min.css' %}"/>
+
+<div class="instructions">
+	<p> Your group is <b>{{ group }}</b>. </p>
+</div>
+
+<div class="instructions">
+<p>
+	Now we start <b>Part 2</b> of the experiment which has two rounds.
+	<ul>
+		<li>You will be matched with two other participants in every round.</li>
+		<li>These matches will vary from round to round. </li>
+		<li>Our algorithm randomly picks one individual of the three to make decisions. You have not been picked as one of these individuals. So, your earnings in this part of the experiment will be determined by decisions taken by one of the other two individuals you have been matched with. </li>
+	</ul>
+</p>
+<p>
+	<b> Payments </b>
+	<ul>
+		<li> One of the rounds you are a part of will be randomly chosen and the amount of money you earned in this round will be your earnings from this part of the experiment.</li>
+	</ul>
+	While the actual decisions are being made, we would like to know from you how you would have made these
+	decisions if you were the individual making them. We would like you to make these hypothetical decisions in a way that you would have if they did determine the actual earnings of the individuals involved.
+</p> 
+</div>
+
+{% include Constants.submit_button_template %}
+
+
+{% endblock %}
+
+

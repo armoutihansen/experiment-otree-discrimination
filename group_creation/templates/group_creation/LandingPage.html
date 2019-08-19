@@ -1,0 +1,26 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'global/CSS/instructions.css' %}"/>
+
+<div class="instructions">
+	<p>
+		<ul>
+			<li>This is an experiment in decision making. The amount of money you and other participants in the experiment earn will depend upon decisions that participants make.</li>
+			<li> This experiment has 3 parts. Your total earnings will be a sum of your earnings in these parts and a participation fee.</li>
+			<li> Your earnings will be given in points which will be translated into real money at the end of the experiment. The point-to-currency ratio is given by:
+				<ul>
+					<li>100 points = €1.00</li>
+				</ul>
+			</li>
+			<li>Everyone will be paid in private at the end of the experiment and you are under no obligation to tell others how much you earned.</li>
+			<li> The data from the experiment will be kept confidential and anonymous. The choices you make or the views you express will not be used to reveal your identity to anyone, including the experimenters. </li>
+		</ul>
+	</p>
+</div>
+
+{% include Constants.submit_button_template %}
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %} Kontrollfragen {% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'global/CSS/instructions.css' %}"/>
+<p><u>3. Lotterien:</u> Aus Ihrem Alltag ist Ihnen die Funktionsweise von Lotterien wahrscheinlich schon bekannt. Dennoch wird es hilfreich sein Sie zunächst damit vertraut zu machen, wie Lotterien in diesem Experiment durchgeführt werden.</p>
+
+	<p>In einer Lotterie werden die Ergebnisse durch Zufall bestimmt. Betrachten Sie zum Beispiel eine Lotterie bei der zwei Auszahlungen, 100 Punkte und 20 Punkte, möglich sind. Es besteht eine Wahrscheinlichkeit von 60%, dass das Ergebnis 100 Punkte beträgt und eine Wahrscheinlichkeit von 40%, dass es 20 Punkte beträgt.<p/>
+
+    <p>Eine Möglichkeit sich diese Lotterie vorzustellen ist die folgende. Nehmen Sie an es gibt eine Urne mit 100 Kugeln von denen 60 rot und 40 blau gefärbt sind. Eine Kugel wird zufällig ohne hinzuschauen aus der Urne gezogen. Falls die Kugel blau ist gewinnen Sie 100 Punkte, bei einer roten Kugel gewinnen Sie 20 Punkte. Wie Sie nachvollziehen können sollten ist die Wahrscheinlichkeit, dass eine zufällig gezogene Kugel blau ist exakt 60% und dass sie rot ist exakt 40%.</p>
+<div class="instructions">
+	<div class="instructions-header">
+
+	</div>
+    <u>Frage 5:</u> Angenommen, es gibt eine Urne mit 100 Kugeln, von denen 70 schwarz und 30 weiß sind. Eine Kugel wird zufällig aus der Urne gezogen. Wenn die Kugel schwarz ist, beträgt der Gewinn 40 Punkte, ist die Kugel weiß beträgt der Gewinn 0 Punkte.
+	{% formfield player.lottery_question_1 %}
+    <u>Frage 6:</u> Angenommen Sie haben zwei Lotterien zur Auswahl.<br>
+
+    Lotterie A : Der Gewinn beträgt 100 Punkte mit 50% Wahrscheinlichkeit und 0 Punkte mit 50% Wahrscheinlichkeit.<br>
+    Lotterie B : Der Gewinn beträgt 200 Punkte mit 50% Wahrscheinlichkeit und 0 Punkte mit 50% Wahrscheinlichkeit.
+    {% formfield player.lottery_question_2 %}
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md text-center">
+			{% next_button %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

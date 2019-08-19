@@ -1,0 +1,21 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'global/CSS/instructions.css' %}"/>
+Bitte beantworten Sie abschließend folgenden Fragebogen. Ihre Angaben werden ausschließlich für diese Studie verwendet. Personenbezogene Daten werden nicht veröffentlicht.
+<div class="instructions">
+	<div class="instructions-header">
+	
+	</div>
+	{% formfields %}
+</div>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md text-center">
+			{% next_button %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% load otree %}
+
+<div class="instructions">
+<ul>
+    <li> When you are ready to make the submission, pick one of the options below and click ‘Submit’. </li>
+    <li> Use the chat box on the bottom right to communicate with the other group members. </li>
+    <li> Click on the buttons at the bottom of the screen for the answer key to the 5 pairs of paintings from before. </li>
+    <li> You can see how much time you have remaining on the top of your screen.</li>
+</ul>
+</div>
+
+<div class='container-fluid'>
+    <div class='row'>
+        <div class='col-7 word_field'>
+            {% formfields %}
+            <div class='container-fluid'>
+    			<div class='row'>
+        			<div class='col-md text-left'>
+            			{% next_button %}
+        			</div>
+    			</div>
+			</div>
+        </div>
+        <div class='col-5'>
+            <p> <b>Chat with members from your group here :</b> </p>
+            {% chat channel=chat_channel nickname=player.participant.vars.group_member %}
+        </div>
+    </div>
+</div>
+<br>
+<br>

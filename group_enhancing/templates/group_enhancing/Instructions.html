@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'global/CSS/Bootstrap/css/bootstrap.min.css' %}"/>
+<link rel="stylesheet" href="{% static 'global/CSS/PhotoPage.css' %}" />
+<link rel="stylesheet" href="{% static 'global/CSS/instructions.css' %}"/>
+
+
+<div class="instructions">
+	<p> Your group is <b>{{ group }}</b>. </p>
+</div>
+
+<div class="instructions">
+	
+	<p>You will now receive two more paintings. For each painting, please answer who of Klee or Kandinsky you think made the painting. For each correct answer, you will be rewarded with {{ total_points }} points. To help you answer these questions, we will provide you with the answer key to the 5 pairs of paintings from before.</p>
+
+	<p>You will also have access to a group chat program through which you can communicate with the other members of your group.You can get help from or offer help to other members in your own group in answering the two questions. Except for the restrictions mentioned below, you can type whatever you want in the lower box of the chat program. Messages will be shared only among group members. You will not be able to see the messages exchanged among the other group. People in the other group will not see the messages from your group either. </p>
+
+	<b>Restrictions on messages</b>
+	<ol>
+		<li>Please do not identify yourself or send any information that could be used to identify you (eg. age, race,education or occupation background etc.). </li>
+		<li>Please refrain from using obscene or offensive language. </li>
+	</ol>
+
+	<p>Once you click ’Next’, you have 5 minutes to answer each of the questions.</p>
+
+</div>
+
+{% include Constants.submit_button_template %}
+
+{% endblock %}
+
+
+
+

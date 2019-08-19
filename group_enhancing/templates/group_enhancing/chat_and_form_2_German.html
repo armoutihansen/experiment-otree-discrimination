@@ -1,0 +1,26 @@
+{% load otree %}
+
+
+<div class='container-fluid'>
+    <div class='row'>
+        <div class='col-7 word_field'>
+            <b>Wählen Sie eine der beiden Optionen aus</b>
+            <br>
+            <br>
+            {% formfields %}
+            <div class='container-fluid'>
+    			<div class='row'>
+        			<div class='col-md text-left'>
+            			{% next_button %}
+        			</div>
+    			</div>
+			</div>
+        </div>
+        <div class='col-5'>
+            <p> <b>Hier können Sie mit Mitgliedern Ihrer Gruppe chatten:</b> </p>
+            {% chat channel=chat_channel nickname=player.participant.vars.group_member %}
+        </div>
+    </div>
+</div>
+<br>
+<br>
